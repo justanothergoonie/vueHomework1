@@ -6,7 +6,7 @@
 		<title>South Park Episode Guide</title>
 		<meta
 			name="description"
-			content="info about South Park, and a guid to its episodes"
+			content="info about South Park, and a guide to its episodes"
 		/>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -16,21 +16,20 @@
 	<body>
 		<div id="app">
 			<div class="title">
-				<h1>Episode Guide for {{southParkData.name}}</h1>
+				<h1>Episode Guide for {{tvShowData.name}}</h1>
 			</div>
 
 			<article>
-				{{southParkData.summary}}. An American {{southParkData.type}}
-				{{southParkData.genres}}, it premiered on
-				{{southParkData.premiered}} and has been on the air for
-				{{southParkData.runtime}} years. It airs on
-				{{southParkData.network.name}} in the
-				{{southParkData.network.country.name}}. It airs on
-				{{southParkData.schedule.days}} for
-				{{southParkData.schedule.time}} minutes, and pulls an average
-				rating of {{southParkData.rating.average}}
+				{{tvShowData.summary}}. An American {{tvShowData.type}}
+				{{tvShowData.genres}}, it premiered on {{tvShowData.premiered}}
+				and has been on the air for {{tvShowData.runtime}} years. It
+				airs on {{tvShowData.network.name}} in the
+				{{tvShowData.network.country.name}}. It airs on
+				{{tvShowData.schedule.days}} for {{tvShowData.schedule.time}}
+				minutes, and pulls an average rating of
+				{{tvShowData.rating.average}}
 			</article>
-			<img :src="southParkData.image.medium" alt="" />
+			<img :src="tvShowData.image.medium" alt="" />
 
 			<h2>Episodes</h2>
 			<table>
@@ -42,7 +41,7 @@
 					<td>Air Time</td>
 					<td>Summary</td>
 				</tr>
-				<tr v-for="episode in southParkData._embedded.episodes">
+				<tr v-for="episode in tvShowData._embedded.episodes">
 					<td>
 						<img
 							class="episode-image"
@@ -59,7 +58,7 @@
 						{{episode.summary}}
 					</td>
 				</tr>
-				<!-- <tr v-for="summary in southParkData._embedded.episodes">
+				<!-- <tr v-for="summary in tvShowData._embedded.episodes">
 					{{summary.summary}}
 				</tr> -->
 			</table>

@@ -5,7 +5,7 @@ var app = new Vue({
   el: '#app',
   data: {
     message: 'Hello Vue!',
-    southParkData: {
+    tvShowData: {
       id: 112,
       url: 'http://www.tvmaze.com/shows/112/south-park',
       name: 'South Park',
