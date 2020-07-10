@@ -1,0 +1,24 @@
+table {
+	width: 100%;
+	tr {
+		@include flex-center;
+		display: flex;
+		min-width: 100%;
+		padding: 20px 0px;
+		td {
+			@include flex-center;
+			flex: 15%;
+			img {
+				display: none;
+			}
+		}
+		td:hover {
+			img {
+				display: block;
+				opacity: 0.5;
+				z-index: 1;
+				position: absolute;
+			}
+		}
+	}
+}

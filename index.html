@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<title>South Park Episode Guide</title>
+		<meta
+			name="description"
+			content="info about South Park, and a guid to its episodes"
+		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="dist/css/main.css" />
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="title">
+				<h1>Episode Guide for {{southParkData.name}}</h1>
+			</div>
+
+			<article>
+				{{southParkData.summary}}. An American {{southParkData.type}}
+				{{southParkData.genres}}, it premiered on
+				{{southParkData.premiered}} and has been on the air for
+				{{southParkData.runtime}} years. It airs on
+				{{southParkData.network.name}} in the
+				{{southParkData.network.country.name}}. It airs on
+				{{southParkData.schedule.days}} for
+				{{southParkData.schedule.time}} minutes, and pulls an average
+				rating of {{southParkData.rating.average}}
+			</article>
+			<img :src="southParkData.image.medium" alt="" />
+
+			<h2>Episodes</h2>
+			<table>
+				<tr>
+					<td>Name</td>
+					<td>Season</td>
+					<td>Episode</td>
+					<td>Air Date</td>
+					<td>Air Time</td>
+					<td>Summary</td>
+				</tr>
+				<tr v-for="episode in southParkData._embedded.episodes">
+					<td>
+						<img
+							class="episode-image"
+							:src="episode.image.medium"
+							alt=""
+						/>
+						{{episode.name}}
+					</td>
+					<td>{{episode.season}}</td>
+					<td>{{episode.number}}</td>
+					<td>{{episode.airdate}}</td>
+					<td>{{episode.airtime}}</td>
+					<td>
+						{{episode.summary}}
+					</td>
+				</tr>
+				<!-- <tr v-for="summary in southParkData._embedded.episodes">
+					{{summary.summary}}
+				</tr> -->
+			</table>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="dist/js/main.js"></script>
+	</body>
+</html>
