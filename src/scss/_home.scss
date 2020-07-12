@@ -1,23 +1,36 @@
+h1,
+h2 {
+	@include flex-center;
+}
 table {
 	width: 100%;
 	tr {
-		@include flex-center;
-		display: flex;
+		// @include flex-center;
+		// display: flex;
 		min-width: 100%;
-		padding: 20px 0px;
+		padding: 25px 0px;
 		td {
-			@include flex-center;
-			flex: 15%;
+			// @include flex-center;
+			width: 15%;
+			height: 100px;
+			text-align: center;
+			position: relative;
+
+			&:hover {
+				img {
+					display: flex;
+				}
+			}
+
 			img {
 				display: none;
-			}
-		}
-		td:hover {
-			img {
-				display: block;
 				opacity: 0.5;
+				top: 0;
 				z-index: 1;
 				position: absolute;
+				object-fit: cover;
+				height: 100%;
+				width: 100%;
 			}
 		}
 	}

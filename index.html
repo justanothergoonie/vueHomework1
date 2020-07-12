@@ -10,17 +10,26 @@
 		/>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
+		<link rel="stylesheet" href="dist/css/reset.css" />
+		<!-- Compiled and minified CSS -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+		/>
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 		<link rel="stylesheet" href="dist/css/main.css" />
 	</head>
 
 	<body>
 		<div id="app">
 			<div class="title">
-				<h1>Episode Guide for {{tvShowData.name}}</h1>
+				<h1>About {{tvShowData.name}}</h1>
 			</div>
 
-			<article>
-				{{tvShowData.summary}}. An American {{tvShowData.type}}
+			<article class="showInfo">
+				{{tvShowData.summary}} An American {{tvShowData.type}}
 				{{tvShowData.genres}}, it premiered on {{tvShowData.premiered}}
 				and has been on the air for {{tvShowData.runtime}} years. It
 				airs on {{tvShowData.network.name}} in the
@@ -29,9 +38,13 @@
 				minutes, and pulls an average rating of
 				{{tvShowData.rating.average}}
 			</article>
-			<img :src="tvShowData.image.medium" alt="" />
+			<img
+				:src="tvShowData.image.medium"
+				class="title-card"
+				alt="an image of the tv shows title card"
+			/>
 
-			<h2>Episodes</h2>
+			<h2>Episode Guide</h2>
 			<table>
 				<tr>
 					<td>Name</td>
@@ -39,9 +52,9 @@
 					<td>Episode</td>
 					<td>Air Date</td>
 					<td>Air Time</td>
-					<td>Summary</td>
+					<td class="summary">Summary</td>
 				</tr>
-				<tr v-for="episode in tvShowData._embedded.episodes">
+				<tr v-for="(episode, index) in tvShowData._embedded.episodes">
 					<td>
 						<img
 							class="episode-image"
@@ -54,7 +67,7 @@
 					<td>{{episode.number}}</td>
 					<td>{{episode.airdate}}</td>
 					<td>{{episode.airtime}}</td>
-					<td>
+					<td class="summary">
 						{{episode.summary}}
 					</td>
 				</tr>
